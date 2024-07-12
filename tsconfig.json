@@ -12,15 +12,25 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+        "@/*": ["./*"],
+        "contentlayer/generated": ["./.contentlayer/generated"]
+      },
+      "plugins": [
+        {
+          "name": "next"
+        }
+      ],
+      "strictNullChecks": true
+    },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".contentlayer/generated",
+    "contentlayer.config.ts"
+  ],
   "exclude": ["node_modules"]
 }
