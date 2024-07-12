@@ -11,32 +11,30 @@ export interface PricingTier {
   export const pricingTiers: PricingTier[] = [
     {
       name: "Pro",
-      price: "$29/month",
-      description: "Unlock the full potential of your market with AI-powered insights.",
+      price: "$34/month",
+      description: "For indie hackers who regularly ship products and need ongoing market insights.",
       features: [
-        "Unlimited AI-driven market analysis",
-        "30 in-depth reports per month",
-        "Real-time trend detection and sentiment analysis",
-        "Competitor tracking and benchmarking",
-        "Customizable dashboards and alerts",
-        "API access for seamless integration",
-        "Priority support with 24/7 availability"
+        "Unlimited market size estimations",
+        "AI-powered competitor analysis",
+        "Trend forecasting for your niche",
+        "Customer sentiment tracking",
+        "Personalized market opportunity alerts",
+        "API access for integration with your tools"
       ],
-      cta: "Supercharge Your Strategy"
+      cta: "Accelerate Your Growth"
     },
     {
       name: "Flex",
       price: "$19/report",
-      description: "Gain crucial market insights on-demand, without commitment.",
+      description: "For developers who need on-demand insights to validate their next big idea.",
       features: [
-        "Full access to Sage AI's powerful analytics",
-        "Comprehensive, actionable reports",
-        "Tailored insights for your specific market",
-        "Identify untapped opportunities and risks",
-        "Multi-format report downloads",
-        "30-day access to generated reports",
-        "Pay only when you need deep insights"
+        "Comprehensive market size report",
+        "Potential customer segmentation",
+        "Competitive landscape overview",
+        "Identified market gaps and opportunities",
+        "Key market trends analysis",
+        "Pay per report, no subscription required"
       ],
-      cta: "Uncover Market Opportunities"
+      cta: "Validate Your Idea"
     }
   ];
