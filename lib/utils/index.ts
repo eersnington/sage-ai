@@ -10,6 +10,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export function absoluteUrl(path: string) {
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
+}
+
 export function getModel(useSubModel = false) {
   const ollamaBaseUrl = process.env.OLLAMA_BASE_URL + '/api'
   const ollamaModel = process.env.OLLAMA_MODEL
