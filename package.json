@@ -5,9 +5,11 @@
   "license": "CC0-4.0",
   "scripts": {
     "dev": "concurrently \"contentlayer2 dev\" \"next dev --turbo\"",
-    "build": "next build",
+    "build": "contentlayer2 build && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mdx:build": "contentlayer2 build",
+    "mdx:dev": "contentlayer2 dev"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^0.0.21",
