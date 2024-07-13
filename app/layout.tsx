@@ -8,6 +8,7 @@ import Footer from '@/components/footer'
 import { Sidebar } from '@/components/sidebar'
 import { Toaster } from '@/components/ui/sonner'
 import { AppStateProvider } from '@/lib/utils/app-state'
+import { Analytics } from "@vercel/analytics/react"
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -18,7 +19,7 @@ const title = 'sage-ai'
 const description = "Unsure about your market size? Sage AI helps indie hackers and developers uncover hidden opportunities and validate product ideas with AI-powered market analysis. Stop guessing, start knowing."
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sage-ai.sh'),
+  metadataBase: new URL('https://sageai.live'),
   title,
   description,
   openGraph: {
@@ -54,6 +55,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Analytics />
           <AppStateProvider>
             <Header />
             {children}
