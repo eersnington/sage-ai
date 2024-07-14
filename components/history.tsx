@@ -17,6 +17,7 @@ import { Suspense } from 'react'
 import { HistorySkeleton } from './history-skelton'
 import { useAppState } from '@/lib/utils/app-state'
 
+
 type HistoryProps = {
   location: 'sidebar' | 'header'
   children?: React.ReactNode
