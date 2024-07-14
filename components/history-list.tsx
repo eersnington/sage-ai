@@ -3,6 +3,8 @@ import HistoryItem from './history-item'
 import { Chat } from '@/lib/types'
 import { getChats } from '@/lib/actions/chat'
 import { ClearHistory } from './clear-history'
+import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
+import { Button } from './ui/button'
 
 type HistoryListProps = {
   userId?: string
@@ -31,6 +33,12 @@ export async function HistoryList({ userId }: HistoryListProps) {
       </div>
       <div className="mt-auto">
         <ClearHistory empty={!chats?.length} />
+        <Button className="w-full my-2" variant="outline">
+          <RegisterLink>Register</RegisterLink>
+        </Button>
+        <Button className="w-full mt-2">
+          <LoginLink>Login</LoginLink>
+        </Button>
       </div>
     </div>
   )
