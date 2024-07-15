@@ -16,7 +16,7 @@ const fontSans = FontSans({
 })
 
 const title = 'sage-ai'
-const description = "Unsure about your market size? Sage AI helps indie hackers and developers uncover hidden opportunities and validate product ideas with AI-powered market analysis. Stop guessing, start knowing."
+const description = "Unsure about your market size? Sage AI helps indie hackers and developers uncover hidden opportunities and validate product ideas with AI-powered market analysis. Stop wasting time on market research."
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sageai.live'),
@@ -30,8 +30,24 @@ export const metadata: Metadata = {
     title,
     description,
     card: 'summary_large_image',
-    creator: '@miiura'
-  }
+    creator: '@sreenington'
+  },
+  keywords: [
+    'Sage AI',
+    'market research tool',
+    'market analysis',
+    'indie hackers',
+    'developers',
+    'product ideas',
+    'AI-powered',
+    'hidden opportunities',
+    'validate product ideas',
+    'marketing co-pilot',
+    'market insights tool',
+    'market size estimation tool',
+    'product validation tool',
+    'Product Hunt Marketing',
+  ]
 }
 
 export const viewport: Viewport = {
@@ -51,7 +67,7 @@ export default function RootLayout({
       <body className={cn('font-sans antialiased', fontSans.variable)}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
