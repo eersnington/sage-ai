@@ -3,22 +3,27 @@ import { ArrowRight } from 'lucide-react'
 
 const exampleMessages = [
   {
-    heading: 'What is Apple Intelligence?',
-    message: 'What is Apple Intelligence?'
+    heading: 'What are the latest trends in remote work tools?',
+    message: 'What are the latest trends in remote work tools?'
   },
   {
-    heading: 'Why is Nvidia growing rapidly?',
-    message: 'Why is Nvidia growing rapidly?'
+    heading: 'Who are the top competitors in the productivity app space?',
+    message: 'Who are the top competitors in the productivity app space?'
   },
   {
-    heading: 'How does the Vercel AI SDK work?',
-    message: 'How does the Vercel AI SDK work?'
+    heading: 'What is the expected growth rate of the e-commerce market?',
+    message: 'What is the expected growth rate of the e-commerce market?'
   },
   {
-    heading: 'Tesla vs Rivian',
-    message: 'Tesla vs Rivian'
+    heading: 'What pain points do small business owners face with digital marketing?',
+    message: 'What pain points do small business owners face with digital marketing?'
+  },
+  {
+    heading: 'What features are most desired in a project management tool?',
+    message: 'What features are most desired in a project management tool?'
   }
-]
+];
+
 export function EmptyScreen({
   submitMessage,
   className
