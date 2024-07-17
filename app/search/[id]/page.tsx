@@ -2,6 +2,7 @@ import { notFound, redirect } from 'next/navigation'
 import { Chat } from '@/components/chat'
 import { getChat } from '@/lib/actions/chat'
 import { AI } from '@/app/actions'
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export const maxDuration = 60
 
@@ -19,7 +20,10 @@ export async function generateMetadata({ params }: SearchPageProps) {
 }
 
 export default async function SearchPage({ params }: SearchPageProps) {
-  const userId = 'anonymous'
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  const userId = user ? user.id : 'anonymous'
   const chat = await getChat(params.id, userId)
 
   if (!chat) {
@@ -37,7 +41,8 @@ export default async function SearchPage({ params }: SearchPageProps) {
         messages: chat.messages
       }}
     >
-      <Chat id={params.id} />
+      <Chat id={params.id}
+      />
     </AI>
   )
 }
