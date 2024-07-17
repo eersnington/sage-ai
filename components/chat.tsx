@@ -7,6 +7,7 @@ import { ChatPanel } from './chat-panel'
 import { ChatMessages } from './chat-messages'
 import { useUIState } from 'ai/rsc'
 import { TypewriterEffect } from './typewriter-effect'
+import Image from 'next/image'
 
 type ChatProps = {
   id?: string
@@ -49,6 +50,13 @@ export function Chat({ id, query }: ChatProps) {
           >
             <TypewriterEffect words={words} />
           </motion.div>
+          {/* <a href="https://www.producthunt.com/posts/sage-ai-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-sage&#0045;ai&#0045;2"
+            target="_blank">
+            <Image src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=471693&theme=dark"
+              alt="Sage&#0032;AI - Fast&#0044;&#0032;Clear&#0032;Market&#0032;Insights&#0044;&#0032;No&#0032;Burnout | Product Hunt"
+              width="250"
+              height="54" />
+          </a> */}
         </>
       )}
       <ChatMessages messages={messages} />
