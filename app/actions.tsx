@@ -24,6 +24,7 @@ import { VideoSearchSection } from '@/components/video-search-section'
 import { transformToolMessages } from '@/lib/utils'
 import { AnswerSection } from '@/components/answer-section'
 import { ErrorCard } from '@/components/error-card'
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { use } from 'react'
 
 async function submit(
@@ -71,15 +72,15 @@ async function submit(
   const content = skip
     ? userInput
     : formData
-    ? JSON.stringify(Object.fromEntries(formData))
-    : null
+      ? JSON.stringify(Object.fromEntries(formData))
+      : null
   const type = skip
     ? undefined
     : formData?.has('input')
-    ? 'input'
-    : formData?.has('related_query')
-    ? 'input_related'
-    : 'inquiry'
+      ? 'input'
+      : formData?.has('related_query')
+        ? 'input_related'
+        : 'inquiry'
 
   // Add the user message to the state
   if (content) {
@@ -324,14 +325,16 @@ export const AI = createAI<AIState, UIState>({
       return
     }
 
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
     const { chatId, messages } = state
     const createdAt = new Date()
-    const userId = 'anonymous'
+    const userId = user ? user.id : 'anonymous'
     const path = `/search/${chatId}`
     const title =
       messages.length > 0
         ? JSON.parse(messages[0].content)?.input?.substring(0, 100) ||
-          'Untitled'
+        'Untitled'
         : 'Untitled'
     // Add an 'end' message at the end to determine if the history needs to be reloaded
     const updatedMessages: AIMessage[] = [
