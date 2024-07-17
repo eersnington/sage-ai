@@ -3,8 +3,12 @@ import HistoryItem from './history-item'
 import { Chat } from '@/lib/types'
 import { getChats } from '@/lib/actions/chat'
 import { ClearHistory } from './clear-history'
-import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
-import { Button } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import AuthButtons from './auth-buttons'
+
 
 type HistoryListProps = {
   userId?: string
@@ -17,6 +21,9 @@ const loadChats = cache(async (userId?: string) => {
 // Start of Selection
 export async function HistoryList({ userId }: HistoryListProps) {
   const chats = await loadChats(userId)
+
+  const { isAuthenticated } = getKindeServerSession();
+  const isUserAuthenticated = await isAuthenticated();
 
   return (
     <div className="flex flex-col flex-1 space-y-3 h-full">
@@ -33,12 +40,7 @@ export async function HistoryList({ userId }: HistoryListProps) {
       </div>
       <div className="mt-auto">
         <ClearHistory empty={!chats?.length} />
-        <Button className="w-full my-2" variant="outline">
-          <RegisterLink>Register</RegisterLink>
-        </Button>
-        <Button className="w-full mt-2">
-          <LoginLink>Login</LoginLink>
-        </Button>
+        <AuthButtons isUserAuthenticated={isUserAuthenticated} />
       </div>
     </div>
   )
