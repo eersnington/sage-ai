@@ -16,7 +16,7 @@ const fontSans = FontSans({
 })
 
 const title = 'sage-ai'
-const description = "Unsure about your market size? Sage AI helps indie hackers and developers uncover hidden opportunities and validate product ideas with AI-powered market analysis. Stop wasting time on market research."
+const description = "Burned out with market research? Sage AI helps indie hackers and developers find market insights fast. Validate your product ideas with your AI co-pilot. Discover opportunities, save time, and make smarter decisions."
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sageai.live'),
