@@ -3,24 +3,24 @@ import { ArrowRight } from 'lucide-react'
 
 const exampleMessages = [
   {
-    heading: 'What are the latest trends in remote work tools?',
-    message: 'What are the latest trends in remote work tools?'
+    heading: 'What is the market size and growth rate of project management tools?',
+    message: 'What is the market size and growth rate of project management tools?'
   },
   {
-    heading: 'Who are the top competitors in the productivity app space?',
-    message: 'Who are the top competitors in the productivity app space?'
+    heading: 'Who are the top competitors in the email marketing software space?',
+    message: 'Who are the top competitors in the email marketing software space?'
   },
   {
-    heading: 'What is the expected growth rate of the e-commerce market?',
-    message: 'What is the expected growth rate of the e-commerce market?'
+    heading: 'What are the common pain points for CRM users?',
+    message: 'What are the common pain points for CRM users?'
   },
   {
-    heading: 'What pain points do small business owners face with digital marketing?',
-    message: 'What pain points do small business owners face with digital marketing?'
+    heading: 'What are the most desired features in social media scheduling tools?',
+    message: 'What are the most desired features in social media scheduling tools?'
   },
   {
-    heading: 'What features are most desired in a project management tool?',
-    message: 'What features are most desired in a project management tool?'
+    heading: 'What are the pricing models for analytics dashboards and how much are customers willing to pay?',
+    message: 'What are the pricing models for analytics dashboards and how much are customers willing to pay?'
   }
 ];
 
