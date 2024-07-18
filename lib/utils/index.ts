@@ -20,20 +20,31 @@ export function getModel(useSubModel = false) {
   const ollamaSubModel = process.env.OLLAMA_SUB_MODEL
   const openaiApiBase = process.env.OPENAI_API_BASE
   const openaiApiKey = process.env.OPENAI_API_KEY
-  let openaiApiModel = process.env.OPENAI_API_MODEL || 'gpt-4o'
+  let openaiApiModel = process.env.OPENAI_API_MODEL || 'gpt-4'
   const googleApiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY
   const anthropicApiKey = process.env.ANTHROPIC_API_KEY
+  const groqApiKey = process.env.GROQ_API_KEY
 
   if (
     !(ollamaBaseUrl && ollamaModel) &&
     !openaiApiKey &&
     !googleApiKey &&
-    !anthropicApiKey
+    !anthropicApiKey &&
+    !groqApiKey
   ) {
     throw new Error(
-      'Missing environment variables for Ollama, OpenAI, Google or Anthropic'
+      'Missing environment variables for Ollama, OpenAI, Google, Anthropic, or Groq'
     )
   }
+
+  // Groq (main option)
+  if (groqApiKey) {
+    return createOpenAI({
+      baseURL: 'https://api.groq.com/openai/v1',
+      apiKey: groqApiKey,
+    }).chat('llama3-8b-8192') // You can change the model as needed
+  }
+
   // Ollama
   if (ollamaBaseUrl && ollamaModel) {
     const ollama = createOllama({ baseURL: ollamaBaseUrl })
@@ -45,19 +56,20 @@ export function getModel(useSubModel = false) {
     return ollama(ollamaModel)
   }
 
+  // Google
   if (googleApiKey) {
     return google('models/gemini-1.5-pro-latest')
   }
 
+  // Anthropic
   if (anthropicApiKey) {
-    return anthropic('claude-3-5-sonnet-20240620')
+    return anthropic('claude-3-sonnet-20240229')
   }
 
-  // Fallback to OpenAI instead
-
+  // Fallback to OpenAI
   const openai = createOpenAI({
-    baseURL: openaiApiBase, // optional base URL for proxies etc.
-    apiKey: openaiApiKey, // optional API key, default to env property OPENAI_API_KEY
+    baseURL: openaiApiBase,
+    apiKey: openaiApiKey,
     organization: '' // optional organization
   })
 
