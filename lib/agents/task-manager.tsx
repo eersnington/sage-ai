@@ -1,12 +1,12 @@
 import { CoreMessage, generateObject } from 'ai'
 import { nextActionSchema } from '../schema/next-action'
-import { getModel } from '../utils'
+import { getGroqModel, getModel } from '../utils'
 
 // Decide whether inquiry is required for the user input
 export async function taskManager(messages: CoreMessage[]) {
   try {
     const result = await generateObject({
-      model: getModel(),
+      model: getGroqModel(),
       system: `As a professional web researcher, your primary objective is to fully comprehend the user's query, conduct thorough web searches to gather the necessary information, and provide an appropriate response.
     To achieve this, you must first analyze the user's input and determine the optimal course of action. You have two options at your disposal:
     1. "proceed": If the provided information is sufficient to address the query effectively, choose this option to proceed with the research and formulate a response.
@@ -19,6 +19,8 @@ export async function taskManager(messages: CoreMessage[]) {
       messages,
       schema: nextActionSchema
     })
+
+    console.log('Task Manager Result:', result)
 
     return result
   } catch (error) {
