@@ -1,7 +1,7 @@
 import { createStreamableUI, createStreamableValue } from 'ai/rsc'
 import { CoreMessage, ToolCallPart, ToolResultPart, streamText } from 'ai'
 import { getTools } from './tools'
-import { getModel, transformToolMessages } from '../utils'
+import { getGroqModel, getModel, transformToolMessages } from '../utils'
 import { AnswerSection } from '@/components/answer-section'
 
 export async function researcher(
@@ -29,7 +29,7 @@ export async function researcher(
 
   const currentDate = new Date().toLocaleString()
   const result = await streamText({
-    model: getModel(useSubModel),
+    model: getModel(),
     maxTokens: 2500,
     system: `As a professional search expert, you possess the ability to search for any information on the web.
     or any information on the web.
@@ -108,6 +108,8 @@ export async function researcher(
     // Add tool responses to the messages
     messages.push({ role: 'tool', content: toolResponses })
   }
+
+  console.log('Final Response:', fullResponse)
 
   return { result, fullResponse, hasError, toolResponses, finishReason }
 }
