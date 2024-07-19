@@ -17,7 +17,6 @@ export async function writer(
   const openai = createOpenAI({
     baseURL: process.env.SPECIFIC_API_BASE,
     apiKey: process.env.SPECIFIC_API_KEY,
-    organization: '' // optional organization
   })
 
   await streamText({
