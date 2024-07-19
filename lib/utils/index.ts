@@ -2,7 +2,7 @@ import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { createOllama } from 'ollama-ai-provider'
 import { createOpenAI } from '@ai-sdk/openai'
-import { google } from '@ai-sdk/google'
+import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { anthropic } from '@ai-sdk/anthropic'
 import { CoreMessage } from 'ai'
 
@@ -37,12 +37,21 @@ export function getModel(useSubModel = false) {
     )
   }
 
+  // Anthropic
+  if (anthropicApiKey) {
+    console.log("Using Anthropic Model")
+    return anthropic('claude-3-sonnet-20240229')
+  }
+
   // Groq (main option)
   if (groqApiKey) {
-    return createOpenAI({
+    console.log("Using Groq Model")
+    const groq =  createOpenAI({
       baseURL: 'https://api.groq.com/openai/v1',
       apiKey: groqApiKey,
-    }).chat('llama3-8b-8192') // You can change the model as needed
+    })
+
+    return groq('mixtral-8x7b-32768')
   }
 
   // Ollama
@@ -58,12 +67,46 @@ export function getModel(useSubModel = false) {
 
   // Google
   if (googleApiKey) {
-    return google('models/gemini-1.5-pro-latest')
+    console.log("Using Google Model")
+
+    const google = createGoogleGenerativeAI({
+      baseURL: 'https://generativelanguage.googleapis.com/v1beta',
+      apiKey: googleApiKey
+    });
+    return google('models/gemini-pro')
   }
 
-  // Anthropic
-  if (anthropicApiKey) {
-    return anthropic('claude-3-sonnet-20240229')
+  // Fallback to OpenAI
+  const openai = createOpenAI({
+    baseURL: openaiApiBase,
+    apiKey: openaiApiKey,
+    organization: '' // optional organization
+  })
+
+  return openai.chat(openaiApiModel)
+}
+
+export function getGroqModel(){
+  const groqApiKey = process.env.GROQ_API_KEY
+  const openaiApiBase = process.env.OPENAI_API_BASE
+  const openaiApiKey = process.env.OPENAI_API_KEY
+  let openaiApiModel = process.env.OPENAI_API_MODEL || 'gpt-4'
+
+  if (!openaiApiKey && !groqApiKey
+  ) {
+    throw new Error(
+      'Missing environment variables for Ollama, OpenAI, Google, Anthropic, or Groq'
+    )
+  }
+
+  if (groqApiKey) {
+    console.log("Using Groq Model")
+    const groq =  createOpenAI({
+      baseURL: 'https://api.groq.com/openai/v1',
+      apiKey: groqApiKey,
+    })
+
+    return groq('mixtral-8x7b-32768')
   }
 
   // Fallback to OpenAI
