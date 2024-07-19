@@ -25,6 +25,8 @@ import { transformToolMessages } from '@/lib/utils'
 import { AnswerSection } from '@/components/answer-section'
 import { ErrorCard } from '@/components/error-card'
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import axios from 'axios'
+
 import { use } from 'react'
 
 async function submit(
@@ -58,6 +60,7 @@ async function submit(
   const groupeId = generateId()
 
   const useSpecificAPI = process.env.USE_SPECIFIC_API_FOR_WRITER === 'true'
+  console.log('useSpecificAPI', useSpecificAPI)
   const useOllamaProvider = !!(
     process.env.OLLAMA_MODEL && process.env.OLLAMA_BASE_URL
   )
@@ -327,6 +330,7 @@ export const AI = createAI<AIState, UIState>({
 
     const { getUser } = getKindeServerSession();
     const user = await getUser();
+
     const { chatId, messages } = state
     const createdAt = new Date()
     const userId = user ? user.id : 'anonymous'
