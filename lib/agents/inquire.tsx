@@ -66,5 +66,8 @@ export async function inquire(
       objectStream.done()
     })
 
+
+  console.log('Final Inquiry:', finalInquiry)
+
   return finalInquiry
 }
