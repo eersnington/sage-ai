@@ -20,7 +20,7 @@
         "slug": "/pages/privacy",
         "slugAsParams": "privacy"
       },
-      "documentHash": "1721291655748",
+      "documentHash": "1736686827332",
       "hasWarnings": false,
       "documentTypeName": "Page"
     },
@@ -44,7 +44,7 @@
         "slug": "/pages/refund",
         "slugAsParams": "refund"
       },
-      "documentHash": "1721291655748",
+      "documentHash": "1736686827332",
       "hasWarnings": false,
       "documentTypeName": "Page"
     },
@@ -68,7 +68,7 @@
         "slug": "/pages/terms",
         "slugAsParams": "terms"
       },
-      "documentHash": "1721291655748",
+      "documentHash": "1736686827332",
       "hasWarnings": false,
       "documentTypeName": "Page"
     }

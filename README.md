@@ -7,6 +7,7 @@ An AI-powered search engine with a generative UI.
 - App framework: [Next.js](https://nextjs.org/)
 - Text streaming / Generative UI: [Vercel AI SDK](https://sdk.vercel.ai/docs)
 - Generative Model: [OpenAI](https://openai.com/)
+- Authentication: [Kinde Auth](https://kinde.com/)
 - Search API: [Tavily AI](https://tavily.com/) / [Serper](https://serper.dev)
 - Reader API: [Jina AI](https://jina.ai/)
 - Serverless Database: [Upstash](https://upstash.com/)
